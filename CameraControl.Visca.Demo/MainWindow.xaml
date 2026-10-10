@@ -1,0 +1,117 @@
+﻿<Window x:Class="CameraControl.Visca.Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:webEye="clr-namespace:WebEye.StreamControl.Wpf;assembly=WebEye.StreamControl.Wpf"
+        mc:Ignorable="d"
+        Title="Kamera Steuerung" SizeToContent="WidthAndHeight" Height="auto" Width="auto" MinWidth="200" MinHeight="100">
+    <TabControl>
+        <TabItem Header="Startseite">
+            <Grid Width="auto" Height="auto">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="89*" />
+                    <ColumnDefinition Width="134*"/>
+                    <ColumnDefinition Width="26*"/>
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+                <GroupBox Header="Positionen" Grid.Row="0" Grid.ColumnSpan="3">
+                    <StackPanel x:Name="spPositionenButtons" Grid.Column="0"/>
+                </GroupBox>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Controller">
+            <Grid Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30.096" />
+                    <ColumnDefinition Width="175.904"/>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+                <Button Grid.Row="0" Grid.Column="0" Grid.RowSpan="3"
+                        Width="200" Height="200"
+                        PreviewMouseLeftButtonDown="AdjustContinuousPanTilt"
+                        PreviewMouseLeftButtonUp="StopContinuousPanTilt"
+                        PreviewMouseMove="AdjustContinuousPanTilt"
+                        x:Name="panButton"
+                        Content="➕" Grid.ColumnSpan="2" Margin="3,0,3,0"/>
+                <Button Grid.Row="3" Grid.Column="0"
+                        PreviewMouseLeftButtonDown="AdjustContinuousZoom"
+                        PreviewMouseLeftButtonUp="StopContinuousZoom"
+                        PreviewMouseMove="AdjustContinuousZoom"
+                        Name="zoomButton"
+                        Content="-     Zoom     +" Grid.ColumnSpan="2" Margin="3,0,3,0"/>
+                <TextBlock Grid.Column="2" Margin="8,0,8,0">Pan speed:</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="1" Margin="8,0,8,0">Tilt speed:</TextBlock>
+                <TextBlock Grid.Column="2" Grid.Row="3" Margin="8,0,8,0">Zoom speed:</TextBlock>
+                <TextBlock Grid.Column="3" Margin="8,0,8,0" Text="{Binding PanSpeed}" />
+                <TextBlock Grid.Column="3" Grid.Row="1" Margin="8,0,8,0" Text="{Binding TiltSpeed}" />
+                <TextBlock Grid.Column="3" Grid.Row="3" Margin="8,0,8,0" Text="{Binding ZoomSpeed}" />
+                <Button Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" Click="Reset" Grid.ColumnSpan="2" Margin="3,0,0,0">Home</Button>
+            </Grid>
+        </TabItem>
+        <TabItem Header="Video">
+            <webEye:StreamControl x:Name="cameraStream" PreserveStreamAspectRatio="True" Margin="3"/>
+        </TabItem>
+        <TabItem Header="Einstellungen">
+            <StackPanel>
+                <GroupBox Header="Verbindung">
+                    <StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="200"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0">IP</Label>
+                            <Label Grid.Row="1" Grid.Column="0">Port</Label>
+                            <TextBox x:Name="tbIP" Grid.Row="0" Grid.Column="1"/>
+                            <TextBox x:Name="tbPort" Grid.Row="1" Grid.Column="1"/>
+                        </Grid>
+                        <Button x:Name="btnSaveNetworkSettings" Click="btnSaveNetworkSettings_Click">Speichern 💾</Button>
+                        <Button x:Name="btnReconnect" Click="btnReconnect_Click">Neu Verbinden ↻</Button>
+                    </StackPanel>
+                </GroupBox>
+                <GroupBox Header="Positionen">
+                    <StackPanel>
+                        <ComboBox Name="cbPositionSettings" SelectedIndex="0" Margin="0 0 0 5" SelectionChanged="cbPositionSettings_SelectionChanged"/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="200"/>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0">Pan</Label>
+                            <Label Grid.Row="1" Grid.Column="0">Tilt</Label>
+                            <Label Grid.Row="2" Grid.Column="0">Zoom</Label>
+                            <TextBox x:Name="tbPan" Grid.Row="0" Grid.Column="1"></TextBox>
+                            <TextBox x:Name="tbTilt" Grid.Row="1" Grid.Column="1"></TextBox>
+                            <TextBox x:Name="tbZoom" Grid.Row="2" Grid.Column="1"></TextBox>
+                        </Grid>
+                        <Button x:Name="btnGetCurrentCameraPosition" Click="btnGetCurrentCameraPosition_Click">Aktuelle Position eintragen ✏️</Button>
+                        <Button x:Name="btnSaveData" Click="btnSavePositionData_Click">Speichern 💾</Button>
+                    </StackPanel>
+                </GroupBox>
+            </StackPanel>
+        </TabItem>
+    </TabControl>
+</Window>

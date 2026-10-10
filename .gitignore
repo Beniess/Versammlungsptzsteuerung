@@ -1,0 +1,21 @@
+# Visual Studio and local editor state
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# .NET build and restore output
+[Bb]in/
+[Oo]bj/
+packages/
+TestResults/
+*.nupkg
+*.snupkg
+
+# Local operating-system files
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
