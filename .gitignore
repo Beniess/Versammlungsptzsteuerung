@@ -14,6 +14,20 @@ TestResults/
 *.nupkg
 *.snupkg
 
+# Local development and media test tools
+.worktools/
+artifacts/
+
+# Machine-specific tool configuration
+.visualstudiomcp/
+.vscode/
+opencode.json
+
+# Generated QA evidence and local agent state
+.omo/evidence/
+.omo/boulder.json
+.omo/start-work/ledger.jsonl
+
 # Local operating-system files
 .DS_Store
 ._*

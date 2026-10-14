@@ -1,0 +1,56 @@
+# Name|Fixed wire bytes. Responses include the FF terminator.
+home|81 01 06 04 FF
+power-on|81 01 04 00 02 FF
+power-off|81 01 04 00 03 FF
+power-query|81 09 04 00 FF
+pan-query|81 09 06 12 FF
+zoom-query|81 09 04 47 FF
+pan-right|81 01 06 01 18 01 02 03 FF
+pan-left|81 01 06 01 18 01 01 03 FF
+tilt-up|81 01 06 01 01 18 03 01 FF
+tilt-down|81 01 06 01 01 18 03 02 FF
+right-up|81 01 06 01 18 18 02 01 FF
+left-up|81 01 06 01 18 18 01 01 FF
+right-down|81 01 06 01 18 18 02 02 FF
+left-down|81 01 06 01 18 18 01 02 FF
+pan-stop|81 01 06 01 01 01 03 03 FF
+pan-half-right|81 01 06 01 0C 01 02 03 FF
+pan-half-left|81 01 06 01 0C 01 01 03 FF
+tilt-half-up|81 01 06 01 01 0C 03 01 FF
+tilt-half-down|81 01 06 01 01 0C 03 02 FF
+zoom-in|81 01 04 07 27 FF
+zoom-out|81 01 04 07 37 FF
+zoom-half-in|81 01 04 07 24 FF
+zoom-half-out|81 01 04 07 34 FF
+zoom-stop|81 01 04 07 00 FF
+absolute-unit|81 01 06 02 0C 0C 00 00 00 01 0F 0F 0F 0F FF
+absolute-zero|81 01 06 02 01 01 00 00 00 00 00 00 00 00 FF
+absolute-limits|81 01 06 02 18 18 08 00 00 00 07 0F 0F 0F FF
+absolute-reverse-limits|81 01 06 02 18 18 07 0F 0F 0F 08 00 00 00 FF
+relative-unit|81 01 06 03 0C 0C 0F 0F 0F 0F 00 00 00 01 FF
+relative-zero|81 01 06 03 01 01 00 00 00 00 00 00 00 00 FF
+relative-limits|81 01 06 03 18 18 08 00 00 00 07 0F 0F 0F FF
+zoom-4660|81 01 04 47 01 02 03 04 FF
+zoom-zero|81 01 04 47 00 00 00 00 FF
+zoom-max|81 01 04 47 07 0F 0F 0F FF
+zoom-min-signed|81 01 04 47 08 00 00 00 FF
+zoom-minus-one|81 01 04 47 0F 0F 0F 0F FF
+ack|90 41 FF
+complete|90 51 FF
+ack-complete|90 41 FF 90 51 FF
+error|90 60 02 FF
+invalid-type|90 70 FF
+short|90 FF
+pan-answer-unit|90 50 0F 0F 0F 0F 00 00 00 01 FF
+pan-answer-zero|90 50 00 00 00 00 00 00 00 00 FF
+pan-answer-limits|90 50 08 00 00 00 07 0F 0F 0F FF
+pan-answer-reverse|90 50 07 0F 0F 0F 08 00 00 00 FF
+zoom-answer-4660|90 50 01 02 03 04 FF
+zoom-answer-zero|90 50 00 00 00 00 FF
+zoom-answer-max|90 50 07 0F 0F 0F FF
+zoom-answer-min|90 50 08 00 00 00 FF
+zoom-answer-minus-one|90 50 0F 0F 0F 0F FF
+power-answer-on|90 50 02 FF
+power-answer-off|90 50 03 FF
+incomplete-pan-answer|90 50 00 00 FF
+incomplete-zoom-answer|90 50 00 FF

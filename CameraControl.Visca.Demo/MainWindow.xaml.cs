@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Configuration;
 using System.Windows.Controls;
 using System.Threading.Tasks;
+using System.Collections.Specialized;
 
 namespace CameraControl.Visca.Demo
 {
@@ -18,6 +19,8 @@ namespace CameraControl.Visca.Demo
     public partial class MainWindow : Window, INotifyPropertyChanged
     {
         private ViscaController controller;
+        private readonly NameValueCollection testSettings;
+        private NameValueCollection AppSettings => testSettings ?? ConfigurationManager.AppSettings;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -30,6 +33,15 @@ namespace CameraControl.Visca.Demo
             InitializeComponent();
             DataContext = this;
             Connect(this, new RoutedEventArgs());
+            SetUpInterface();
+        }
+
+        internal MainWindow(ViscaController controller, NameValueCollection settings)
+        {
+            this.controller = controller;
+            testSettings = settings;
+            InitializeComponent();
+            DataContext = this;
             SetUpInterface();
         }
 
@@ -59,10 +71,14 @@ namespace CameraControl.Visca.Demo
                 return;
             }
             var position = e.GetPosition(panButton);
+            AdjustPanTiltPosition(position, panButton.ActualWidth, panButton.ActualHeight);
+        }
 
-            int panSpeed = NormalizeSpeed(position.X, panButton.ActualWidth, ViscaController.MaxPanTiltSpeed);
+        private void AdjustPanTiltPosition(Point position, double width, double height)
+        {
+            int panSpeed = NormalizeSpeed(position.X, width, ViscaController.MaxPanTiltSpeed);
             // Tilt has "up is positive" in camera coordinates, but "up is negative" in screen coordinates
-            int tiltSpeed = -NormalizeSpeed(position.Y, panButton.ActualHeight, ViscaController.MaxPanTiltSpeed);
+            int tiltSpeed = -NormalizeSpeed(position.Y, height, ViscaController.MaxPanTiltSpeed);
             SetPanTiltSpeed(panSpeed, tiltSpeed);
         }
 
@@ -76,9 +92,28 @@ namespace CameraControl.Visca.Demo
                 return;
             }
             var position = e.GetPosition(zoomButton);
-            int zoomSpeed = NormalizeSpeed(position.X, zoomButton.ActualWidth, ViscaController.MaxZoomSpeed);
+            AdjustZoomPosition(position.X, zoomButton.ActualWidth);
+        }
+
+        private void AdjustZoomPosition(double x, double width)
+        {
+            int zoomSpeed = NormalizeSpeed(x, width, ViscaController.MaxZoomSpeed);
             SetZoomSpeed(zoomSpeed);
         }
+
+        internal void TestPanTiltPosition(double x, double y, double width, double height, bool pressed)
+        {
+            if (pressed) AdjustPanTiltPosition(new Point(x, y), width, height);
+        }
+
+        internal void TestZoomPosition(double x, double width, bool pressed)
+        {
+            if (pressed) AdjustZoomPosition(x, width);
+        }
+
+        internal void TestReleasePanTilt() => StopContinuousPanTilt(this, null);
+        internal void TestReleaseZoom() => StopContinuousZoom(this, null);
+        internal void TestHome() => Reset(this, new RoutedEventArgs());
 
         private void SetPanTiltSpeed(int panSpeed, int tiltSpeed)
         {
@@ -133,9 +168,9 @@ namespace CameraControl.Visca.Demo
 
         public void GoToPosition(Position position)
         {
-            short pan = Convert.ToInt16(ConfigurationManager.AppSettings["System.Windows.Controls.ComboBoxItem: " + position.ToString() + "Pan"]);
-            short tilt = Convert.ToInt16(ConfigurationManager.AppSettings["System.Windows.Controls.ComboBoxItem: " + position.ToString() + "Tilt"]);
-            short zoom = Convert.ToInt16(ConfigurationManager.AppSettings["System.Windows.Controls.ComboBoxItem: " + position.ToString() + "Zoom"]);
+            short pan = Convert.ToInt16(AppSettings["System.Windows.Controls.ComboBoxItem: " + position.ToString() + "Pan"]);
+            short tilt = Convert.ToInt16(AppSettings["System.Windows.Controls.ComboBoxItem: " + position.ToString() + "Tilt"]);
+            short zoom = Convert.ToInt16(AppSettings["System.Windows.Controls.ComboBoxItem: " + position.ToString() + "Zoom"]);
             controller?.SetPanTilt(pan, tilt, BitConverter.GetBytes(12)[0], BitConverter.GetBytes(12)[0]);
             controller?.SetZoom(zoom);
         }
@@ -153,8 +188,8 @@ namespace CameraControl.Visca.Demo
                 cbPositionSettings.Items.Add(comboBoxItem);
             }
 
-            tbIP.Text = ConfigurationManager.AppSettings["IP_Adress"];
-            tbPort.Text = ConfigurationManager.AppSettings["Port"];
+            tbIP.Text = AppSettings["IP_Adress"];
+            tbPort.Text = AppSettings["Port"];
         }
 
         private void SavePositionSettings(string position)
@@ -191,9 +226,9 @@ namespace CameraControl.Visca.Demo
         {
             string position = cbPositionSettings.SelectedItem.ToString();
 
-            tbPan.Text = ConfigurationManager.AppSettings[position + "Pan"];
-            tbTilt.Text = ConfigurationManager.AppSettings[position + "Tilt"];
-            tbZoom.Text = ConfigurationManager.AppSettings[position + "Zoom"];
+            tbPan.Text = AppSettings[position + "Pan"];
+            tbTilt.Text = AppSettings[position + "Tilt"];
+            tbZoom.Text = AppSettings[position + "Zoom"];
         }
 
         private void btnReconnect_Click(object sender, RoutedEventArgs e)
