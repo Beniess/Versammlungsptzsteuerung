@@ -1,46 +1,59 @@
 # Versammlungsptzsteuerung
 
-PTZ-Kamerasteuerung fuer Versammlungen. Dieses Repository ist die Ausgangsbasis
-fuer die spaetere Weiterentwicklung des importierten CameraControl-Projekts.
+Native PTZ-Kamerasteuerung für Windows 11 x64. Die neue App verwendet WinUI 3,
+.NET 10 und die vorhandene VISCA-Bibliothek. Vier Bildtasten rufen Leser, Tisch,
+Redner und Home auf. Steuerung, Einstellungen und Vorschau ergänzen die
+Positionsseite.
+
+Der aktuelle Stand ist ein Entwicklungs- und QA-Stand. Die Oberfläche ist
+sichtbar nutzbar. Die vollständige Release-Prüfung ist noch offen. Der Betrieb
+mit einer realen Kamera wurde noch nicht geprüft.
+
+- [Bedienung, Erststart und Versionswechsel](docs/bedienung.md)
+- [Aufbau und Entwicklungsablauf](docs/architektur.md)
+- [Offene Freigabeprüfungen](docs/freigabestand.md)
+- [Historischer Importstand](docs/importstand-2026-10-10.md)
 
 ## Projektaufbau
 
 | Projekt | Aufgabe | Zielplattform |
 | --- | --- | --- |
-| `CameraControl.Visca` | VISCA ueber TCP, Kamerabefehle und simulierte Kamera | .NET Standard 2.0 / .NET 6 |
-| `CameraControl.Visca.Demo` | Windows-Oberflaeche mit Pan/Tilt/Zoom, Positionen, Einstellungen und RTSP-Video | WPF / .NET Framework 4.8.1 |
-| `CameraControl.Visca.StressTest` | Gleichzeitige Abfragen an eine echte Kamera | .NET 6 |
+| `CameraControl.WinUI` | Neue native Oberfläche, Vorschau und lokaler EXE-Start | WinUI 3 / .NET 10 / Windows 11 x64 |
+| `CameraControl.AppCore` | Einstellungen, Kamerasitzung, Positionsentwürfe und Versionswechsel | .NET 10 |
+| `CameraControl.Visca` | VISCA über TCP und Kamerabefehle | .NET Standard 2.0 / .NET 10 |
+| `CameraControl.WinUI.Tests` | Native UIA- und Adapterprüfungen | .NET 10 / Windows |
+| `CameraControl.AppCore.Tests` und `CameraControl.Visca.Tests` | Speicher-, Ablauf- und Protokollprüfungen | Ziele der jeweiligen Testprojekte |
+| `CameraControl.Visca.Demo` | WPF-Referenz aus dem Import | .NET Framework 4.8.1 |
+| `CameraControl.Visca.StressTest` | Historischer Stresstest mit realer Kameraadresse | .NET 6 |
 
-Die Solution heisst `Versammlungsptzsteuerung.sln`. Die bestehenden Projekt-
-und Namespace-Namen wurden beim Import beibehalten.
+Die Solution `Versammlungsptzsteuerung.sln` enthält bisher die historischen
+Projekte. Für die neue Anwendung das Projekt
+`CameraControl.WinUI/CameraControl.WinUI.csproj` öffnen. Die WPF-Referenz und der
+Stresstest sind keine Startanleitung und keine Freigabe der neuen WinUI-App.
 
 ## Entwicklung
 
-Die Desktop-Anwendung benoetigt Windows und passende .NET-/WPF-Buildwerkzeuge
-fuer .NET Framework 4.8.1. Die Solution kann dort in Visual Studio geoeffnet
-werden. NuGet-Abhaengigkeiten sind `Microsoft.Extensions.Logging.Abstractions`
-6.0.0 und `WebEye.StreamControl.Wpf` 1.0.3.
+Die neue App wird mit dem .NET-10-SDK und den Windows-Buildwerkzeugen gebaut.
+Paketversionen stehen in den Projekt- und Lockdateien. Der Release-Build erzeugt
+eine selbständige Datei `CameraControl.WinUI.exe`. Die Laufzeit und die nativen
+Videodateien gehören zum Bundle. Der vollständige Nachweis auf einem sauberen
+Windows-11-System ist noch Teil der Release-Prüfung.
 
-Kameraadresse, Port und Positionen stehen in
-`CameraControl.Visca.Demo/App.config`. Die Anwendung verbindet sich beim Start
-mit der konfigurierten Kamera und startet den Videostream. Der Stresstest hat
-eine eigene, fest eingetragene Kameraadresse in `Program.cs` und ist kein
-automatisierter Unit-Test. `FakeViscaCamera` ist vorhanden, aber bisher nicht
-mit dem Start der Desktop-Anwendung verbunden.
+Die WinUI-App übernimmt keine alten Werte aus `App.config`. Neue Daten liegen
+unter `%LOCALAPPDATA%\Versammlungsptzsteuerung\Data`. Host, VISCA-Port und
+vollständige RTSP-URL werden getrennt eingerichtet. Ein frischer Datenordner hat
+keinen Host, keinen Videostream und keine eingerichteten normalen Positionen.
 
-## Importstand
+Entwicklungs- und QA-Starts verwenden eigene Datenpfade. Im QA-Modus sind nur
+Loopback-Endpunkte erlaubt. Die aktuelle sichtbare QA-Instanz ist deshalb kein
+Nachweis für eine reale Kameraverbindung.
 
-- Importiert am 10.10.2026 aus `DemoCode-CameraControl-2.zip`.
-- Alle 566 entpackten Dateien wurden bytegenau gegen das Archiv geprueft.
-- Quellcode und Projektdateien sind versioniert; `.vs`, `bin` und `obj` bleiben
-  lokal und werden durch `.gitignore` ausgeschlossen.
-- Beim Import wurden keine Funktionen erweitert. Build und Kamerabetrieb
-  wurden nicht getestet; auf dem Import-Mac war `dotnet` nicht im PATH.
-- Die vorhandenen Positionsschluessel in `App.config` stimmen teilweise nicht
-  mit den Schluesseln im Anwendungscode ueberein. VISCA und RTSP verwenden im
-  Anwendungscode denselben Port. Diese Punkte sind vor dem Kameratest zu pruefen.
-- Die urspruenglichen Quellcode-Header nennen Jon Skeet und Apache License 2.0.
-  Die dort referenzierte `LICENSE.txt` ist im gelieferten Archiv nicht enthalten.
+## Historie und Lizenzunterlagen
 
-SHA-256 des Originalarchivs:
-`441a556c58a3074bc9dbf0217cde5f8ad1cdcda96de24e0ac4ecec61eb0a0832`
+Der ursprüngliche Import erfolgte am 10.10.2026 aus
+`DemoCode-CameraControl-2.zip`. Der Archivnachweis und das vollständige damalige
+README bleiben im [Importstand](docs/importstand-2026-10-10.md) erhalten.
+
+Das Lizenzquelleninventar und die Drittsoftware-Unterlagen werden getrennt
+erstellt. Diese README erklärt keine abgeschlossene Lizenz- oder
+Release-Freigabe.
