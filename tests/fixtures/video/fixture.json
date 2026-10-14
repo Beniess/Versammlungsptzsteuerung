@@ -1,0 +1,14 @@
+{
+  "file": "rtsp-h264-640x360.mp4",
+  "sha256": "9ba40b5491490d3c7b4e7f8a2d039bdaa7b562f3f48348cda4dcb7642763809b",
+  "codec": "h264",
+  "width": 640,
+  "height": 360,
+  "framesPerSecond": 30,
+  "frameCount": 240,
+  "durationSeconds": 8,
+  "audio": false,
+  "content": "FFmpeg testsrc2 motion, fixed red/green/blue 48x48 markers and FRAME counter",
+  "generator": "FFmpeg Windows essentials 9.0.2; libx264; one encoding thread",
+  "source": "locally generated; no camera or external stream"
+}

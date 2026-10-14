@@ -1,0 +1,58 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.22000.0</TargetPlatformMinVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWindowsForms>true</UseWindowsForms>
+    <PlatformTarget>x64</PlatformTarget>
+    <IsTestProject>true</IsTestProject>
+    <IsPackable>false</IsPackable>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="Exists('..\CameraControl.WinUI\Views\WindowLayoutPolicy.cs')">
+    <DefineConstants>$(DefineConstants);HAS_WINDOW_LAYOUT_POLICY</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="Exists('..\CameraControl.WinUI\ApplicationServices\ApplicationServices.cs')">
+    <DefineConstants>$(DefineConstants);HAS_APPLICATION_SERVICES</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="Exists('..\CameraControl.WinUI\ApplicationServices\UserOperation.cs')">
+    <DefineConstants>$(DefineConstants);HAS_USER_OPERATION</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="Exists('..\CameraControl.WinUI\ApplicationServices\LicenseCatalog.cs')">
+    <DefineConstants>$(DefineConstants);HAS_LICENSE_CATALOG</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="Exists('..\CameraControl.WinUI\Video\PngImageDecoder.cs') And Exists('..\CameraControl.WinUI\Video\WindowsRtspCredentialStore.cs')">
+    <DefineConstants>$(DefineConstants);HAS_T7_MEDIA_ADAPTERS</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="Exists('..\CameraControl.WinUI\Video\VideoShutdown.cs')">
+    <DefineConstants>$(DefineConstants);HAS_VIDEO_SHUTDOWN</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="NativeRunner\**\*.cs" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="NUnit" Version="4.3.2" />
+    <PackageReference Include="NUnit3TestAdapter" Version="5.0.0" />
+    <PackageReference Include="FlaUI.Core" Version="5.0.0" />
+    <PackageReference Include="FlaUI.UIA3" Version="5.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\CameraControl.WinUI\ApplicationServices\RtspCredentials.cs" Link="Production\RtspCredentials.cs" Condition="Exists('..\CameraControl.WinUI\ApplicationServices\RtspCredentials.cs')" />
+    <Compile Include="..\CameraControl.WinUI\ApplicationServices\UserOperation.cs" Link="Production\UserOperation.cs" Condition="Exists('..\CameraControl.WinUI\ApplicationServices\UserOperation.cs')" />
+    <Compile Include="..\CameraControl.WinUI\ApplicationServices\LicenseCatalog.cs" Link="Production\LicenseCatalog.cs" Condition="Exists('..\CameraControl.WinUI\ApplicationServices\LicenseCatalog.cs')" />
+    <EmbeddedResource Include="..\LICENSES\**\*" LogicalName="CameraControl.Licenses/%(RecursiveDir)%(Filename)%(Extension)" />
+    <Compile Include="..\CameraControl.WinUI\ApplicationServices\ApplicationServices.Editing.cs" Link="Production\ApplicationServices.Editing.cs" Condition="Exists('..\CameraControl.WinUI\ApplicationServices\ApplicationServices.Editing.cs')" />
+    <Compile Include="..\CameraControl.WinUI\Video\PngImageDecoder.cs" Link="Production\PngImageDecoder.cs" Condition="Exists('..\CameraControl.WinUI\Video\PngImageDecoder.cs')" />
+    <Compile Include="..\CameraControl.WinUI\Video\WindowsRtspCredentialStore.cs" Link="Production\WindowsRtspCredentialStore.cs" Condition="Exists('..\CameraControl.WinUI\Video\WindowsRtspCredentialStore.cs')" />
+    <Compile Include="..\CameraControl.WinUI\Video\VideoShutdown.cs" Link="Production\VideoShutdown.cs" Condition="Exists('..\CameraControl.WinUI\Video\VideoShutdown.cs')" />
+    <ProjectReference Include="..\CameraControl.AppCore\CameraControl.AppCore.csproj" />
+    <Compile Include="..\CameraControl.WinUI\Deployment\*.cs" Link="Production\Deployment\%(Filename)%(Extension)" />
+    <Compile Include="..\CameraControl.WinUI\Startup\StartupOptions.cs" Link="Production\Startup\StartupOptions.cs" />
+    <Compile Include="..\CameraControl.WinUI\Views\WindowLayoutPolicy.cs"
+             Link="Production\WindowLayoutPolicy.cs"
+             Condition="Exists('..\CameraControl.WinUI\Views\WindowLayoutPolicy.cs')" />
+    <Compile Include="..\CameraControl.WinUI\ApplicationServices\ApplicationServices.cs"
+             Link="Production\ApplicationServices.cs"
+             Condition="Exists('..\CameraControl.WinUI\ApplicationServices\ApplicationServices.cs')" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>NativeAdjustmentRunner</AssemblyName>
+    <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.22000.0</TargetPlatformMinVersion>
+    <Nullable>enable</Nullable><ImplicitUsings>enable</ImplicitUsings>
+    <UseWindowsForms>true</UseWindowsForms><PlatformTarget>x64</PlatformTarget>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="4.3.2" />
+    <PackageReference Include="FlaUI.Core" Version="5.0.0" />
+    <PackageReference Include="FlaUI.UIA3" Version="5.0.0" />
+    <ProjectReference Include="..\..\CameraControl.AppCore\CameraControl.AppCore.csproj" />
+    <Compile Include="..\..\CameraControl.WinUI.Tests\NativeQaSession.cs" Link="NativeQaSession.cs" />
+    <Compile Include="..\..\CameraControl.WinUI.Tests\PhotoViscaFixture.cs" Link="PhotoViscaFixture.cs" />
+    <Compile Include="..\..\CameraControl.WinUI.Tests\PreviewMediaFixture.cs" Link="PreviewMediaFixture.cs" />
+    <Compile Include="..\..\CameraControl.WinUI.Tests\NativePhotoWorkflowTests.cs" Link="NativePhotoWorkflowTests.cs" />
+  </ItemGroup>
+</Project>

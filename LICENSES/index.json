@@ -1,0 +1,511 @@
+{
+  "FormatVersion": 1,
+  "Components": [
+    {
+      "Name": "CameraControl.Visca",
+      "Version": "Importstand 2026-10-10",
+      "License": "Apache-2.0",
+      "Copyright": "Copyright Jon Skeet, 2020–2022. Vorhandene Quellkopftexte bleiben erhalten.",
+      "Source": "https://github.com/jskeet/DemoCode/tree/f885f88c8ff0a54312bc162881a4a1fc096007da/CameraControl",
+      "Files": [
+        {
+          "Path": "CameraControl.Visca/Apache-2.0.txt",
+          "Sha256": "CFC7749B96F63BD31C3C42B5C471BF756814053E847C10F3EB003417BC523D30",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "LibVLCSharp.WinUI",
+      "Version": "3.10.1",
+      "License": "LGPL-2.1-or-later",
+      "Copyright": "",
+      "Source": "https://www.nuget.org/packages/LibVLCSharp.WinUI/3.10.1 ; Quellrevision 4896d0e06d19ac40b46802cf7dc167d432f3fd63",
+      "Files": [
+        {
+          "Path": "LibVLCSharp.WinUI-3.10.1/LICENSE",
+          "Sha256": "20C17D8B8C48A600800DFD14F95D5CB9FF47066A9641DDEAB48DC54AEC96E331",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "Microsoft.Extensions.Logging.Abstractions",
+      "Version": "6.0.0",
+      "License": "MIT",
+      "Copyright": "© Microsoft Corporation. All rights reserved.",
+      "Source": "https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/6.0.0 ; Quellrevision 4822e3c3aa77eb82b2fb33c9321f923cf11ddde6",
+      "Files": [
+        {
+          "Path": "Microsoft.Extensions.Logging.Abstractions-6.0.0/LICENSE.TXT",
+          "Sha256": "D7A68596AB69B06F51CA278A6545148E4269A9381C26D597C13DF5D88E08CF5B",
+          "ReadableText": true
+        },
+        {
+          "Path": "Microsoft.Extensions.Logging.Abstractions-6.0.0/THIRD-PARTY-NOTICES.TXT",
+          "Sha256": "A6344BFB229BC08D1071CEC400EEA216E307439F961C5943EC1B56D2245ACB95",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "Microsoft.Web.WebView2",
+      "Version": "1.0.3719.77",
+      "License": "Microsoft WebView2 LICENSE.txt und NOTICE.txt",
+      "Copyright": "© Microsoft Corporation. All rights reserved.",
+      "Source": "https://www.nuget.org/packages/Microsoft.Web.WebView2/1.0.3719.77",
+      "Files": [
+        {
+          "Path": "Microsoft.Web.WebView2-1.0.3719.77/LICENSE.txt",
+          "Sha256": "0AF8F1B807512AAE39C2AC1AA4D0CAE65CABECB6FD554B8439A5162A0D6ECA55",
+          "ReadableText": true
+        },
+        {
+          "Path": "Microsoft.Web.WebView2-1.0.3719.77/NOTICE.txt",
+          "Sha256": "106423785C5B7EBA0A8E61D1837F2132E9C828E20AD530F565D981C1DF60DD90",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "Microsoft.Windows.AI.MachineLearning",
+      "Version": "2.1.74",
+      "License": "Mitgelieferte Microsoft-Lizenz und ThirdPartyNotices",
+      "Copyright": "© Microsoft Corporation. All rights reserved.",
+      "Source": "https://www.nuget.org/packages/Microsoft.Windows.AI.MachineLearning/2.1.74",
+      "Files": [
+        {
+          "Path": "Microsoft.Windows.AI.MachineLearning-2.1.74/license.txt",
+          "Sha256": "66395F8CB219087FAE2BD025010BD9076B736C14F03B48F20295471C0C376814",
+          "ReadableText": true
+        },
+        {
+          "Path": "Microsoft.Windows.AI.MachineLearning-2.1.74/ThirdPartyNotices.txt",
+          "Sha256": "FB0AF774B4D7CFFC5B9D046F2AAEADE2F37DF2F80ABF8033C95DFFFCC77A8866",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "Microsoft.WindowsAppSDK.AI",
+      "Version": "2.5.5",
+      "License": "Microsoft Windows App SDK license.txt und mitgelieferte Notices",
+      "Copyright": "© Microsoft Corporation. All rights reserved.",
+      "Source": "https://www.nuget.org/packages/Microsoft.WindowsAppSDK.AI/2.5.5",
+      "Files": [
+        {
+          "Path": "Microsoft.WindowsAppSDK.AI-2.5.5/license.txt",
+          "Sha256": "5B11E6347756E40FE0274BC08C97F89201B94F0D50181A09A00F1F4740840501",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "Microsoft.WindowsAppSDK.DWrite",
+      "Version": "2.1.0",
+      "License": "Microsoft Windows App SDK license.txt und mitgelieferte Notices",
+      "Copyright": "© Microsoft Corporation. All rights reserved.",
+      "Source": "https://www.nuget.org/packages/Microsoft.WindowsAppSDK.DWrite/2.1.0",
+      "Files": [
+        {
+          "Path": "Microsoft.WindowsAppSDK.DWrite-2.1.0/license.txt",
+          "Sha256": "5B11E6347756E40FE0274BC08C97F89201B94F0D50181A09A00F1F4740840501",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "Microsoft.WindowsAppSDK.Foundation",
+      "Version": "2.3.12",
+      "License": "Microsoft Windows App SDK license.txt und mitgelieferte Notices",
+      "Copyright": "© Microsoft Corporation. All rights reserved.",
+      "Source": "https://www.nuget.org/packages/Microsoft.WindowsAppSDK.Foundation/2.3.12",
+      "Files": [
+        {
+          "Path": "Microsoft.WindowsAppSDK.Foundation-2.3.12/license.txt",
+          "Sha256": "5B11E6347756E40FE0274BC08C97F89201B94F0D50181A09A00F1F4740840501",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "Microsoft.WindowsAppSDK.InteractiveExperiences",
+      "Version": "2.1.9",
+      "License": "Microsoft Windows App SDK license.txt und mitgelieferte Notices",
+      "Copyright": "© Microsoft Corporation. All rights reserved.",
+      "Source": "https://www.nuget.org/packages/Microsoft.WindowsAppSDK.InteractiveExperiences/2.1.9",
+      "Files": [
+        {
+          "Path": "Microsoft.WindowsAppSDK.InteractiveExperiences-2.1.9/license.txt",
+          "Sha256": "5B11E6347756E40FE0274BC08C97F89201B94F0D50181A09A00F1F4740840501",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "Microsoft.WindowsAppSDK.Search",
+      "Version": "2.5.5",
+      "License": "Microsoft Windows App SDK license.txt und mitgelieferte Notices",
+      "Copyright": "© Microsoft Corporation. All rights reserved.",
+      "Source": "https://www.nuget.org/packages/Microsoft.WindowsAppSDK.Search/2.5.5",
+      "Files": [
+        {
+          "Path": "Microsoft.WindowsAppSDK.Search-2.5.5/license.txt",
+          "Sha256": "5B11E6347756E40FE0274BC08C97F89201B94F0D50181A09A00F1F4740840501",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "Microsoft.WindowsAppSDK.Widgets",
+      "Version": "2.0.5",
+      "License": "Microsoft Windows App SDK license.txt und mitgelieferte Notices",
+      "Copyright": "© Microsoft Corporation. All rights reserved.",
+      "Source": "https://www.nuget.org/packages/Microsoft.WindowsAppSDK.Widgets/2.0.5",
+      "Files": [
+        {
+          "Path": "Microsoft.WindowsAppSDK.Widgets-2.0.5/license.txt",
+          "Sha256": "5B11E6347756E40FE0274BC08C97F89201B94F0D50181A09A00F1F4740840501",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "Microsoft.WindowsAppSDK.WinUI",
+      "Version": "2.3.9",
+      "License": "Microsoft Windows App SDK license.txt und mitgelieferte Notices",
+      "Copyright": "© Microsoft Corporation. All rights reserved.",
+      "Source": "https://www.nuget.org/packages/Microsoft.WindowsAppSDK.WinUI/2.3.9",
+      "Files": [
+        {
+          "Path": "Microsoft.WindowsAppSDK.WinUI-2.3.9/license.txt",
+          "Sha256": "5B11E6347756E40FE0274BC08C97F89201B94F0D50181A09A00F1F4740840501",
+          "ReadableText": true
+        },
+        {
+          "Path": "Microsoft.WindowsAppSDK.WinUI-2.3.9/NOTICE.txt",
+          "Sha256": "E25393C0D340A1821827B093FA4DBBFCCCD8FEB7BF769E7FA773E3955CD5314B",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "SharpDX.Direct3D11",
+      "Version": "4.2.0",
+      "License": "MIT",
+      "Copyright": "Copyright (c) 2010-2016 Alexandre Mutel",
+      "Source": "https://www.nuget.org/packages/SharpDX.Direct3D11/4.2.0 ; Quellrevision 8e5df9f17b1d328c595a9df5851dbb2537b55621",
+      "Files": [
+        {
+          "Path": "SharpDX.Direct3D11-4.2.0/LICENSE",
+          "Sha256": "ED6E2ED433CC7006268284316AE05C40EC7350903C2CC67FFE8DB6CDFCA887CA",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "SharpDX.DXGI",
+      "Version": "4.2.0",
+      "License": "MIT",
+      "Copyright": "Copyright (c) 2010-2016 Alexandre Mutel",
+      "Source": "https://www.nuget.org/packages/SharpDX.DXGI/4.2.0 ; Quellrevision 8e5df9f17b1d328c595a9df5851dbb2537b55621",
+      "Files": [
+        {
+          "Path": "SharpDX.DXGI-4.2.0/LICENSE",
+          "Sha256": "ED6E2ED433CC7006268284316AE05C40EC7350903C2CC67FFE8DB6CDFCA887CA",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "SharpDX",
+      "Version": "4.2.0",
+      "License": "MIT",
+      "Copyright": "Copyright (c) 2010-2016 Alexandre Mutel",
+      "Source": "https://www.nuget.org/packages/SharpDX/4.2.0 ; Quellrevision 8e5df9f17b1d328c595a9df5851dbb2537b55621",
+      "Files": [
+        {
+          "Path": "SharpDX-4.2.0/LICENSE",
+          "Sha256": "ED6E2ED433CC7006268284316AE05C40EC7350903C2CC67FFE8DB6CDFCA887CA",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "System.Numerics.Tensors",
+      "Version": "9.0.0",
+      "License": "MIT",
+      "Copyright": "© Microsoft Corporation. All rights reserved.",
+      "Source": "https://www.nuget.org/packages/System.Numerics.Tensors/9.0.0 ; Quellrevision 9d5a6a9aa463d6d10b0b0ba6d5982cc82f363dc3",
+      "Files": [
+        {
+          "Path": "System.Numerics.Tensors-9.0.0/LICENSE.TXT",
+          "Sha256": "D7A68596AB69B06F51CA278A6545148E4269A9381C26D597C13DF5D88E08CF5B",
+          "ReadableText": true
+        },
+        {
+          "Path": "System.Numerics.Tensors-9.0.0/THIRD-PARTY-NOTICES.TXT",
+          "Sha256": "40686C6447A7D5B5D3693068E4571B5F483D7ED335AEEE773EF662440DE4C5D5",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "Microsoft.WindowsAppSDK",
+      "Version": "2.5.1",
+      "License": "Microsoft Windows App SDK license.txt und NOTICE.txt",
+      "Copyright": "Copyright Microsoft Corporation.",
+      "Source": "https://www.nuget.org/packages/Microsoft.WindowsAppSDK/2.5.1",
+      "Files": [
+        {
+          "Path": "Microsoft.WindowsAppSDK-2.5.1/license.txt",
+          "Sha256": "5B11E6347756E40FE0274BC08C97F89201B94F0D50181A09A00F1F4740840501",
+          "ReadableText": true
+        },
+        {
+          "Path": "Microsoft.WindowsAppSDK-2.5.1/NOTICE.txt",
+          "Sha256": "572B43D41DEA717DAE7DC5DE69ACB20A74DF025E8F5A3C0AA6F7BCA02615E23C",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "Microsoft.NETCore.App.Runtime.win-x64",
+      "Version": "10.0.11",
+      "License": "MIT und die Lizenzen in THIRD-PARTY-NOTICES.TXT",
+      "Copyright": "Copyright Microsoft Corporation and .NET contributors.",
+      "Source": "https://www.nuget.org/packages/Microsoft.NETCore.App.Runtime.win-x64/10.0.11",
+      "Files": [
+        {
+          "Path": "Microsoft.NETCore.App.Runtime.win-x64-10.0.11/LICENSE.TXT",
+          "Sha256": "D7A68596AB69B06F51CA278A6545148E4269A9381C26D597C13DF5D88E08CF5B",
+          "ReadableText": true
+        },
+        {
+          "Path": "Microsoft.NETCore.App.Runtime.win-x64-10.0.11/THIRD-PARTY-NOTICES.TXT",
+          "Sha256": "6D15E10A101C6BFFF2AB4429ED061BF76C456FC4B23AD6B03E0D0F8377148A21",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "Microsoft.Windows.SDK.NET.Ref",
+      "Version": "10.0.26100.57",
+      "License": "Microsoft Windows SDK-Lizenz; Original-RTF und lesbare Textfassung",
+      "Copyright": "Copyright Microsoft Corporation.",
+      "Source": "https://www.nuget.org/packages/Microsoft.Windows.SDK.NET.Ref/10.0.26100.57",
+      "Files": [
+        {
+          "Path": "Microsoft.Windows.SDK.NET.Ref-10.0.26100.57/LICENSE-readable.txt",
+          "Sha256": "5D27A78A64D3CB74DDB7556B625E119B05D12ABEFF5909A9EE8B171A0BE7DC75",
+          "ReadableText": true
+        },
+        {
+          "Path": "Microsoft.Windows.SDK.NET.Ref-10.0.26100.57/LICENSE.rtf",
+          "Sha256": "DD07EB178E00C6BBA4148457FC00FF77CD4887EB521D504186FE59C9EC8BBE62",
+          "ReadableText": false
+        }
+      ]
+    },
+    {
+      "Name": "VideoLAN.LibVLC.Windows",
+      "Version": "3.0.24",
+      "License": "VLC-Bibliothek LGPL-2.1-or-later; enthaltene GPL-Komponenten gesondert beachten",
+      "Copyright": "Copyright VideoLAN contributors. Siehe AUTHORS und die Quellkopftexte.",
+      "Source": "https://www.nuget.org/packages/VideoLAN.LibVLC.Windows/3.0.24",
+      "Files": [
+        {
+          "Path": "VideoLAN.LibVLC.Windows-3.0.24/AUTHORS",
+          "Sha256": "18E4B93B7679FE1F621C0B88D7507A27E9F62D924D9D3ECA142DE3D31BFE8956",
+          "ReadableText": true
+        },
+        {
+          "Path": "VideoLAN.LibVLC.Windows-3.0.24/COPYING",
+          "Sha256": "8177F97513213526DF2CF6184D8FF986C675AFB514D4E68A404010521B880643",
+          "ReadableText": true
+        },
+        {
+          "Path": "VideoLAN.LibVLC.Windows-3.0.24/COPYING.LIB",
+          "Sha256": "DC626520DCD53A22F727AF3EE42C770E56C97A64FE3ADB063799D8AB032FE551",
+          "ReadableText": true
+        },
+        {
+          "Path": "VideoLAN.LibVLC.Windows-3.0.24/THANKS",
+          "Sha256": "335A6F84E2AB3F84683707FA1FF4B69F1785AFEACB780E13E364090EAFB0B9D5",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "LIVE555 Streaming Media",
+      "Version": "2026.06.24",
+      "License": "LGPL-3.0-or-later; COPYING.LESSER integriert GPL 3 aus COPYING",
+      "Copyright": "Copyright (c) 1996–2026 Live Networks, Inc.",
+      "Source": "https://download.videolan.org/pub/contrib/live555/live.2026.06.24.tar.gz",
+      "Files": [
+        {
+          "Path": "live555-2026.06.24/live/COPYING",
+          "Sha256": "8CEB4B9EE5ADEDDE47B31E975C1D90C73AD27B6B165A1DCD80C7C545EB65B903",
+          "ReadableText": true
+        },
+        {
+          "Path": "live555-2026.06.24/live/COPYING.LESSER",
+          "Sha256": "DA7EABB7BAFDF7D3AE5E9F223AA5BDC1EECE45AC569DC21B3B037520B4464768",
+          "ReadableText": true
+        },
+        {
+          "Path": "live555-2026.06.24/live/README",
+          "Sha256": "E609E428D428273F72254F1E413ED94F32F2AE20BB3616D78AC8DBDF4730B4C9",
+          "ReadableText": true
+        }
+      ]
+    },
+    {
+      "Name": "VLC-Contrib-Quellen: ffmpeg",
+      "Version": "ffmpeg-8.1.2.tar.xz",
+      "License": "LGPL-2.1-or-later als Basis; GPL-2.0/GPL-3.0/LGPL-3.0 für die in LICENSE.md beschriebenen Optionen. Keine pauschale Aussage zur Linkkonfiguration.",
+      "Copyright": "Siehe unveränderte Originaltexte und Quelldateien.",
+      "Source": "contrib/ffmpeg/ffmpeg-8.1.2.tar.xz",
+      "Scope": "Conservative source companion; this entry does not claim every component was linked",
+      "Files": [
+        {
+          "Path": "Contrib/ffmpeg/ffmpeg-8.1.2/COPYING.GPLv2",
+          "Sha256": "8177F97513213526DF2CF6184D8FF986C675AFB514D4E68A404010521B880643",
+          "ReadableText": true,
+          "SourceArchive": "contrib/ffmpeg/ffmpeg-8.1.2.tar.xz",
+          "SourceEntry": "ffmpeg-8.1.2/COPYING.GPLv2"
+        },
+        {
+          "Path": "Contrib/ffmpeg/ffmpeg-8.1.2/COPYING.GPLv3",
+          "Sha256": "8CEB4B9EE5ADEDDE47B31E975C1D90C73AD27B6B165A1DCD80C7C545EB65B903",
+          "ReadableText": true,
+          "SourceArchive": "contrib/ffmpeg/ffmpeg-8.1.2.tar.xz",
+          "SourceEntry": "ffmpeg-8.1.2/COPYING.GPLv3"
+        },
+        {
+          "Path": "Contrib/ffmpeg/ffmpeg-8.1.2/COPYING.LGPLv2.1",
+          "Sha256": "246041B6ECF9BC32D718A62C57877C78B5EB397B6467E74ED7AE2626AB189C30",
+          "ReadableText": true,
+          "SourceArchive": "contrib/ffmpeg/ffmpeg-8.1.2.tar.xz",
+          "SourceEntry": "ffmpeg-8.1.2/COPYING.LGPLv2.1"
+        },
+        {
+          "Path": "Contrib/ffmpeg/ffmpeg-8.1.2/COPYING.LGPLv3",
+          "Sha256": "DA7EABB7BAFDF7D3AE5E9F223AA5BDC1EECE45AC569DC21B3B037520B4464768",
+          "ReadableText": true,
+          "SourceArchive": "contrib/ffmpeg/ffmpeg-8.1.2.tar.xz",
+          "SourceEntry": "ffmpeg-8.1.2/COPYING.LGPLv3"
+        },
+        {
+          "Path": "Contrib/ffmpeg/ffmpeg-8.1.2/doc/authors.texi",
+          "Sha256": "FB5FAC6DD8F7474033E933814491A8297D8723C52BE4DCBCC82EEF9C4F008DD2",
+          "ReadableText": true,
+          "SourceArchive": "contrib/ffmpeg/ffmpeg-8.1.2.tar.xz",
+          "SourceEntry": "ffmpeg-8.1.2/doc/authors.texi"
+        },
+        {
+          "Path": "Contrib/ffmpeg/ffmpeg-8.1.2/LICENSE.md",
+          "Sha256": "2E1D16C72FD74E12063776371DA757322F8B77589386532F4FD8634BDE7DE1AF",
+          "ReadableText": true,
+          "SourceArchive": "contrib/ffmpeg/ffmpeg-8.1.2.tar.xz",
+          "SourceEntry": "ffmpeg-8.1.2/LICENSE.md"
+        }
+      ]
+    },
+    {
+      "Name": "VLC-Contrib-Quellen: x264",
+      "Version": "x264-e067ab0b530395f90b578f6d05ab0a225e2efdf9.tar.gz",
+      "License": "GPL-2.0-or-later; siehe originales COPYING und die erhaltenen Quellkopftexte",
+      "Copyright": "Siehe unveränderte Originaltexte und Quelldateien.",
+      "Source": "git-sources/x264-e067ab0b530395f90b578f6d05ab0a225e2efdf9.tar.gz",
+      "Scope": "Conservative source companion; this entry does not claim every component was linked",
+      "Files": [
+        {
+          "Path": "Contrib/x264/x264-e067ab0b530395f90b578f6d05ab0a225e2efdf9/AUTHORS",
+          "Sha256": "783150C1BEF404FC7140924F3006EFF27C940EA73EF38B3BC76FCB9C173229A5",
+          "ReadableText": true,
+          "SourceArchive": "git-sources/x264-e067ab0b530395f90b578f6d05ab0a225e2efdf9.tar.gz",
+          "SourceEntry": "x264-e067ab0b530395f90b578f6d05ab0a225e2efdf9/AUTHORS"
+        },
+        {
+          "Path": "Contrib/x264/x264-e067ab0b530395f90b578f6d05ab0a225e2efdf9/COPYING",
+          "Sha256": "32B1062F7DA84967E7019D01AB805935CAA7AB7321A7CED0E30EBE75E5DF1670",
+          "ReadableText": true,
+          "SourceArchive": "git-sources/x264-e067ab0b530395f90b578f6d05ab0a225e2efdf9.tar.gz",
+          "SourceEntry": "x264-e067ab0b530395f90b578f6d05ab0a225e2efdf9/COPYING"
+        }
+      ]
+    },
+    {
+      "Name": "VLC-Contrib-Quellen: zlib",
+      "Version": "zlib-1.3.2.tar.xz",
+      "License": "zlib; beigefügte Unterkomponenten behalten ihre eigenen Originaltexte",
+      "Copyright": "Siehe unveränderte Originaltexte und Quelldateien.",
+      "Source": "contrib/zlib/zlib-1.3.2.tar.xz",
+      "Scope": "Conservative source companion; this entry does not claim every component was linked",
+      "Files": [
+        {
+          "Path": "Contrib/zlib/zlib-1.3.2/contrib/dotzlib/LICENSE_1_0.txt",
+          "Sha256": "36266A8FD073568394CB81CDB2B124F7FDAE2C64C1A7ED09DB34B4D22EFA2951",
+          "ReadableText": true,
+          "SourceArchive": "contrib/zlib/zlib-1.3.2.tar.xz",
+          "SourceEntry": "zlib-1.3.2/contrib/dotzlib/LICENSE_1_0.txt"
+        },
+        {
+          "Path": "Contrib/zlib/zlib-1.3.2/contrib/minizip/LICENSE.Info-Zip",
+          "Sha256": "FC686023047CE5CE3A18A9B8A777156F0E475929D3DE06BAC279F3C025D2B2CA",
+          "ReadableText": true,
+          "SourceArchive": "contrib/zlib/zlib-1.3.2.tar.xz",
+          "SourceEntry": "zlib-1.3.2/contrib/minizip/LICENSE.Info-Zip"
+        },
+        {
+          "Path": "Contrib/zlib/zlib-1.3.2/LICENSE",
+          "Sha256": "E32FF4E00D9D94930537635291DA39E7E612703334BF6FDE8C7F1686FE8A45A2",
+          "ReadableText": true,
+          "SourceArchive": "contrib/zlib/zlib-1.3.2.tar.xz",
+          "SourceEntry": "zlib-1.3.2/LICENSE"
+        }
+      ]
+    },
+    {
+      "Name": "VLC-Contrib-Quellen: lua",
+      "Version": "lua-5.1.5.tar.gz",
+      "License": "MIT; siehe originales COPYRIGHT",
+      "Copyright": "Siehe unveränderte Originaltexte und Quelldateien.",
+      "Source": "contrib/lua/lua-5.1.5.tar.gz",
+      "Scope": "Conservative source companion; this entry does not claim every component was linked",
+      "Files": [
+        {
+          "Path": "Contrib/lua/lua-5.1.5/COPYRIGHT",
+          "Sha256": "EE5E3E82AF1E1B543C4F216E399D7C8CFEE797711913F349E385101C4AE60A79",
+          "ReadableText": true,
+          "SourceArchive": "contrib/lua/lua-5.1.5.tar.gz",
+          "SourceEntry": "lua-5.1.5/COPYRIGHT"
+        },
+        {
+          "Path": "Contrib/lua/lua-5.1.5/doc/readme.html",
+          "Sha256": "1FC570BA3CFF0038533E22BF0F0141FDD7415FD2F56122E08194ECEE02DF588C",
+          "ReadableText": false,
+          "SourceArchive": "contrib/lua/lua-5.1.5.tar.gz",
+          "SourceEntry": "lua-5.1.5/doc/readme.html"
+        }
+      ]
+    },
+    {
+      "Name": "VLC HRTF dataset",
+      "Version": "dodeca_and_7channel_3DSL_HRTF.sofa",
+      "License": "LGPL-2.1-or-later",
+      "Copyright": "Copyright (C) 2017 3D Sound Labs",
+      "Source": "VideoLAN.LibVLC.Windows/3.0.24/build/x64/hrtfs/dodeca_and_7channel_3DSL_HRTF.sofa",
+      "Files": [
+        {
+          "Path": "VLC-HRTF/Original-sofa-license-metadata.txt",
+          "Sha256": "3388DDB88CA4BC05C62624184E082A5056D498F3FD2181AB48CC41C0C8D17751",
+          "ReadableText": true,
+          "Extraction": "Original ASCII metadata, wording unchanged"
+        }
+      ]
+    }
+  ],
+  "Notices": "THIRD-PARTY-NOTICES.txt"
+}

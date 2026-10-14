@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.22000.0</TargetPlatformMinVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWindowsForms>true</UseWindowsForms>
+    <PlatformTarget>x64</PlatformTarget>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="NUnit" Version="4.3.2" />
+    <PackageReference Include="FlaUI.Core" Version="5.0.0" />
+    <PackageReference Include="FlaUI.UIA3" Version="5.0.0" />
+    <ProjectReference Include="..\..\CameraControl.AppCore\CameraControl.AppCore.csproj" />
+    <Compile Include="..\NativeQaSession.cs" Link="NativeQaSession.cs" />
+    <Compile Include="..\NativeLayoutTests.cs" Link="NativeLayoutTests.cs" />
+    <Compile Include="..\NativeHighContrastTests.cs" Link="NativeHighContrastTests.cs" />
+    <Compile Include="..\NativeControlTests.cs" Link="NativeControlTests.cs" />
+    <Compile Include="..\NativeLicenseTests.cs" Link="NativeLicenseTests.cs" />
+    <Compile Include="..\NativePreviewTests.cs" Link="NativePreviewTests.cs" />
+    <Compile Include="..\PreviewMediaFixture.cs" Link="PreviewMediaFixture.cs" />
+    <Compile Include="..\PhotoViscaFixture.cs" Link="PhotoViscaFixture.cs" />
+    <Compile Include="..\..\tests\video-qa\GuestPhotosAndPreview.cs" Link="GuestPhotosAndPreview.cs" />
+    <Compile Include="..\..\tests\clean-windows\*.cs" Link="CleanWindows\%(Filename)%(Extension)" />
+    <Compile Include="..\..\tests\release-deployment\GuestReleaseDeployment.cs" Link="GuestReleaseDeployment.cs" />
+    <Compile Include="..\ReleaseDeploymentTests.cs" Link="ReleaseDeploymentTests.cs" />
+    <Compile Include="..\..\CameraControl.WinUI\Deployment\*.cs" Link="Deployment\%(Filename)%(Extension)" />
+    <Compile Include="..\..\CameraControl.WinUI\Startup\StartupOptions.cs" Link="StartupOptions.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,168 @@
+HINWEISE ZU FREMDKOMPONENTEN
+Die zugeordneten Lizenztexte und Hinweise sind im LICENSES-Verzeichnis enthalten.
+Die Originaltexte behalten ihre Sprache und ihren Wortlaut.
+
+CameraControl.Visca Importstand 2026-10-10
+Lizenz: Apache-2.0
+Copyright Jon Skeet, 2020–2022. Vorhandene Quellkopftexte bleiben erhalten.
+Herkunft: https://github.com/jskeet/DemoCode/tree/f885f88c8ff0a54312bc162881a4a1fc096007da/CameraControl
+Text: CameraControl.Visca/Apache-2.0.txt
+
+LibVLCSharp.WinUI 3.10.1
+Lizenz: LGPL-2.1-or-later
+Herkunft: https://www.nuget.org/packages/LibVLCSharp.WinUI/3.10.1 ; Quellrevision 4896d0e06d19ac40b46802cf7dc167d432f3fd63
+Text: LibVLCSharp.WinUI-3.10.1/LICENSE
+
+Microsoft.Extensions.Logging.Abstractions 6.0.0
+Lizenz: MIT
+© Microsoft Corporation. All rights reserved.
+Herkunft: https://www.nuget.org/packages/Microsoft.Extensions.Logging.Abstractions/6.0.0 ; Quellrevision 4822e3c3aa77eb82b2fb33c9321f923cf11ddde6
+Text: Microsoft.Extensions.Logging.Abstractions-6.0.0/LICENSE.TXT
+Text: Microsoft.Extensions.Logging.Abstractions-6.0.0/THIRD-PARTY-NOTICES.TXT
+
+Microsoft.Web.WebView2 1.0.3719.77
+Lizenz: Microsoft WebView2 LICENSE.txt und NOTICE.txt
+© Microsoft Corporation. All rights reserved.
+Herkunft: https://www.nuget.org/packages/Microsoft.Web.WebView2/1.0.3719.77
+Text: Microsoft.Web.WebView2-1.0.3719.77/LICENSE.txt
+Text: Microsoft.Web.WebView2-1.0.3719.77/NOTICE.txt
+
+Microsoft.Windows.AI.MachineLearning 2.1.74
+Lizenz: Mitgelieferte Microsoft-Lizenz und ThirdPartyNotices
+© Microsoft Corporation. All rights reserved.
+Herkunft: https://www.nuget.org/packages/Microsoft.Windows.AI.MachineLearning/2.1.74
+Text: Microsoft.Windows.AI.MachineLearning-2.1.74/license.txt
+Text: Microsoft.Windows.AI.MachineLearning-2.1.74/ThirdPartyNotices.txt
+
+Microsoft.WindowsAppSDK.AI 2.5.5
+Lizenz: Microsoft Windows App SDK license.txt und mitgelieferte Notices
+© Microsoft Corporation. All rights reserved.
+Herkunft: https://www.nuget.org/packages/Microsoft.WindowsAppSDK.AI/2.5.5
+Text: Microsoft.WindowsAppSDK.AI-2.5.5/license.txt
+
+Microsoft.WindowsAppSDK.DWrite 2.1.0
+Lizenz: Microsoft Windows App SDK license.txt und mitgelieferte Notices
+© Microsoft Corporation. All rights reserved.
+Herkunft: https://www.nuget.org/packages/Microsoft.WindowsAppSDK.DWrite/2.1.0
+Text: Microsoft.WindowsAppSDK.DWrite-2.1.0/license.txt
+
+Microsoft.WindowsAppSDK.Foundation 2.3.12
+Lizenz: Microsoft Windows App SDK license.txt und mitgelieferte Notices
+© Microsoft Corporation. All rights reserved.
+Herkunft: https://www.nuget.org/packages/Microsoft.WindowsAppSDK.Foundation/2.3.12
+Text: Microsoft.WindowsAppSDK.Foundation-2.3.12/license.txt
+
+Microsoft.WindowsAppSDK.InteractiveExperiences 2.1.9
+Lizenz: Microsoft Windows App SDK license.txt und mitgelieferte Notices
+© Microsoft Corporation. All rights reserved.
+Herkunft: https://www.nuget.org/packages/Microsoft.WindowsAppSDK.InteractiveExperiences/2.1.9
+Text: Microsoft.WindowsAppSDK.InteractiveExperiences-2.1.9/license.txt
+
+Microsoft.WindowsAppSDK.Search 2.5.5
+Lizenz: Microsoft Windows App SDK license.txt und mitgelieferte Notices
+© Microsoft Corporation. All rights reserved.
+Herkunft: https://www.nuget.org/packages/Microsoft.WindowsAppSDK.Search/2.5.5
+Text: Microsoft.WindowsAppSDK.Search-2.5.5/license.txt
+
+Microsoft.WindowsAppSDK.Widgets 2.0.5
+Lizenz: Microsoft Windows App SDK license.txt und mitgelieferte Notices
+© Microsoft Corporation. All rights reserved.
+Herkunft: https://www.nuget.org/packages/Microsoft.WindowsAppSDK.Widgets/2.0.5
+Text: Microsoft.WindowsAppSDK.Widgets-2.0.5/license.txt
+
+Microsoft.WindowsAppSDK.WinUI 2.3.9
+Lizenz: Microsoft Windows App SDK license.txt und mitgelieferte Notices
+© Microsoft Corporation. All rights reserved.
+Herkunft: https://www.nuget.org/packages/Microsoft.WindowsAppSDK.WinUI/2.3.9
+Text: Microsoft.WindowsAppSDK.WinUI-2.3.9/license.txt
+Text: Microsoft.WindowsAppSDK.WinUI-2.3.9/NOTICE.txt
+
+SharpDX.Direct3D11 4.2.0
+Lizenz: MIT
+Copyright (c) 2010-2016 Alexandre Mutel
+Herkunft: https://www.nuget.org/packages/SharpDX.Direct3D11/4.2.0 ; Quellrevision 8e5df9f17b1d328c595a9df5851dbb2537b55621
+Text: SharpDX.Direct3D11-4.2.0/LICENSE
+
+SharpDX.DXGI 4.2.0
+Lizenz: MIT
+Copyright (c) 2010-2016 Alexandre Mutel
+Herkunft: https://www.nuget.org/packages/SharpDX.DXGI/4.2.0 ; Quellrevision 8e5df9f17b1d328c595a9df5851dbb2537b55621
+Text: SharpDX.DXGI-4.2.0/LICENSE
+
+SharpDX 4.2.0
+Lizenz: MIT
+Copyright (c) 2010-2016 Alexandre Mutel
+Herkunft: https://www.nuget.org/packages/SharpDX/4.2.0 ; Quellrevision 8e5df9f17b1d328c595a9df5851dbb2537b55621
+Text: SharpDX-4.2.0/LICENSE
+
+System.Numerics.Tensors 9.0.0
+Lizenz: MIT
+© Microsoft Corporation. All rights reserved.
+Herkunft: https://www.nuget.org/packages/System.Numerics.Tensors/9.0.0 ; Quellrevision 9d5a6a9aa463d6d10b0b0ba6d5982cc82f363dc3
+Text: System.Numerics.Tensors-9.0.0/LICENSE.TXT
+Text: System.Numerics.Tensors-9.0.0/THIRD-PARTY-NOTICES.TXT
+
+Microsoft.WindowsAppSDK 2.5.1
+Lizenz: Microsoft Windows App SDK license.txt und NOTICE.txt
+Copyright Microsoft Corporation.
+Herkunft: https://www.nuget.org/packages/Microsoft.WindowsAppSDK/2.5.1
+Text: Microsoft.WindowsAppSDK-2.5.1/license.txt
+Text: Microsoft.WindowsAppSDK-2.5.1/NOTICE.txt
+
+Microsoft.NETCore.App.Runtime.win-x64 10.0.11
+Lizenz: MIT und die Lizenzen in THIRD-PARTY-NOTICES.TXT
+Copyright Microsoft Corporation and .NET contributors.
+Herkunft: https://www.nuget.org/packages/Microsoft.NETCore.App.Runtime.win-x64/10.0.11
+Text: Microsoft.NETCore.App.Runtime.win-x64-10.0.11/LICENSE.TXT
+Text: Microsoft.NETCore.App.Runtime.win-x64-10.0.11/THIRD-PARTY-NOTICES.TXT
+
+Microsoft.Windows.SDK.NET.Ref 10.0.26100.57
+Lizenz: Microsoft Windows SDK-Lizenz; Original-RTF und lesbare Textfassung
+Copyright Microsoft Corporation.
+Herkunft: https://www.nuget.org/packages/Microsoft.Windows.SDK.NET.Ref/10.0.26100.57
+Text: Microsoft.Windows.SDK.NET.Ref-10.0.26100.57/LICENSE-readable.txt
+Text: Microsoft.Windows.SDK.NET.Ref-10.0.26100.57/LICENSE.rtf
+
+VideoLAN.LibVLC.Windows 3.0.24
+Lizenz: VLC-Bibliothek LGPL-2.1-or-later; enthaltene GPL-Komponenten gesondert beachten
+Copyright VideoLAN contributors. Siehe AUTHORS und die Quellkopftexte.
+Herkunft: https://www.nuget.org/packages/VideoLAN.LibVLC.Windows/3.0.24
+Text: VideoLAN.LibVLC.Windows-3.0.24/AUTHORS
+Text: VideoLAN.LibVLC.Windows-3.0.24/COPYING
+Text: VideoLAN.LibVLC.Windows-3.0.24/COPYING.LIB
+Text: VideoLAN.LibVLC.Windows-3.0.24/THANKS
+
+LIVE555 Streaming Media 2026.06.24
+Lizenz: LGPL-3.0-or-later; COPYING.LESSER integriert GPL 3 aus COPYING
+Copyright (c) 1996–2026 Live Networks, Inc.
+Herkunft: https://download.videolan.org/pub/contrib/live555/live.2026.06.24.tar.gz
+Text: live555-2026.06.24/live/COPYING
+Text: live555-2026.06.24/live/COPYING.LESSER
+Text: live555-2026.06.24/live/README
+
+Enthaltener x264-Encoder: plugins/codec/libx26410b_plugin.dll. Der VLC-Quellkopf von modules/codec/x264.c nennt GPL-2.0-or-later und Copyright (C) 2004–2010 the VideoLAN team. Der x264-Contrib-Stand ist e067ab0b530395f90b578f6d05ab0a225e2efdf9.
+Mitgelieferte HRTF-Datei: hrtfs/dodeca_and_7channel_3DSL_HRTF.sofa. Ihr Metadatentext nennt Copyright (C) 2017 3D Sound Labs und LGPL 2.1 oder später.
+Mitgelieferte Lua-/HTTP-Dateien enthalten weitere Originalhinweise. jquery.jstree.js nennt Copyright (c) 2010 Ivan Bozhanov und MIT oder GPL Version 2. Diese Quelltexte und Hinweise bleiben im nativen Baum erhalten.
+
+ORIGINALTEXTE AUS DEM FESTEN VLC-CONTRIB-QUELLBEGLEITSATZ
+Der konservative Quellenbegleitsatz enthält zusätzliche Plattform-/Build-Komponenten. Seine Einträge erklären nicht, dass jedes Rezept tatsächlich in die App gelinkt wurde.
+VLC-Contrib-Quellen: ffmpeg ffmpeg-8.1.2.tar.xz: LGPL-2.1-or-later als Basis; GPL-2.0/GPL-3.0/LGPL-3.0 für die in LICENSE.md beschriebenen Optionen. Keine pauschale Aussage zur Linkkonfiguration.
+Originaltext: Contrib/ffmpeg/ffmpeg-8.1.2/COPYING.GPLv2
+Originaltext: Contrib/ffmpeg/ffmpeg-8.1.2/COPYING.GPLv3
+Originaltext: Contrib/ffmpeg/ffmpeg-8.1.2/COPYING.LGPLv2.1
+Originaltext: Contrib/ffmpeg/ffmpeg-8.1.2/COPYING.LGPLv3
+Originaltext: Contrib/ffmpeg/ffmpeg-8.1.2/doc/authors.texi
+Originaltext: Contrib/ffmpeg/ffmpeg-8.1.2/LICENSE.md
+VLC-Contrib-Quellen: x264 x264-e067ab0b530395f90b578f6d05ab0a225e2efdf9.tar.gz: GPL-2.0-or-later; siehe originales COPYING und die erhaltenen Quellkopftexte
+Originaltext: Contrib/x264/x264-e067ab0b530395f90b578f6d05ab0a225e2efdf9/AUTHORS
+Originaltext: Contrib/x264/x264-e067ab0b530395f90b578f6d05ab0a225e2efdf9/COPYING
+VLC-Contrib-Quellen: zlib zlib-1.3.2.tar.xz: zlib; beigefügte Unterkomponenten behalten ihre eigenen Originaltexte
+Originaltext: Contrib/zlib/zlib-1.3.2/contrib/dotzlib/LICENSE_1_0.txt
+Originaltext: Contrib/zlib/zlib-1.3.2/contrib/minizip/LICENSE.Info-Zip
+Originaltext: Contrib/zlib/zlib-1.3.2/LICENSE
+VLC-Contrib-Quellen: lua lua-5.1.5.tar.gz: MIT; siehe originales COPYRIGHT
+Originaltext: Contrib/lua/lua-5.1.5/COPYRIGHT
+Originaltext: Contrib/lua/lua-5.1.5/doc/readme.html
+VLC HRTF dataset dodeca_and_7channel_3DSL_HRTF.sofa: LGPL-2.1-or-later
+Originaltext: VLC-HRTF/Original-sofa-license-metadata.txt
+Alle weiteren im festen Quellbegleitsatz gefundenen Original-Lizenz-/Notice-Dateien sind in Sources/sources-manifest.json mit genauem Archiv- und Dateipfad indiziert und in diesen lokalen Archiven enthalten.

@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "CameraControl.WinUI (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "CameraControl.WinUI (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

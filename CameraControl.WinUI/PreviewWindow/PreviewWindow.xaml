@@ -1,0 +1,21 @@
+<Window
+    x:Class="CameraControl_WinUI.PreviewWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Vorschau — Versammlungs-Kamerasteuerung">
+    <Grid x:Name="Root" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Padding="16" RowSpacing="8"
+          AutomationProperties.AutomationId="PreviewRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <CommandBar DefaultLabelPosition="Right">
+            <AppBarButton Label="Erneut verbinden" Icon="Refresh" Click="OnReconnect"
+                          AutomationProperties.AutomationId="PreviewReconnect" AutomationProperties.Name="Vorschau erneut verbinden" />
+        </CommandBar>
+        <Grid x:Name="VideoHost" Grid.Row="1" />
+        <InfoBar x:Name="Status" Grid.Row="2" IsOpen="True" IsClosable="False" Severity="Informational"
+                 Message="Die Vorschau wird vorbereitet." AutomationProperties.AutomationId="PreviewStatus" />
+    </Grid>
+</Window>
