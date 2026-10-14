@@ -11,6 +11,7 @@ mit einer realen Kamera wurde noch nicht geprüft.
 
 - [Bedienung, Erststart und Versionswechsel](docs/bedienung.md)
 - [Aufbau und Entwicklungsablauf](docs/architektur.md)
+- [GitHub-Build und Veröffentlichung](docs/github-publish.md)
 - [Offene Freigabeprüfungen](docs/freigabestand.md)
 - [Historischer Importstand](docs/importstand-2026-10-10.md)
 

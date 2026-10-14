@@ -1,115 +1,203 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-# This workflow will build, test, sign and package a WPF or Windows Forms desktop application
-# built on .NET Core.
-# To learn how to migrate your existing application to .NET Core,
-# refer to https://docs.microsoft.com/en-us/dotnet/desktop-wpf/migration/convert-project-from-net-framework
-#
-# To configure this workflow:
-#
-# 1. Configure environment variables
-# GitHub sets default environment variables for every workflow run.
-# Replace the variables relative to your project in the "env" section below.
-#
-# 2. Signing
-# Generate a signing certificate in the Windows Application
-# Packaging Project or add an existing signing certificate to the project.
-# Next, use PowerShell to encode the .pfx file using Base64 encoding
-# by running the following Powershell script to generate the output string:
-#
-# $pfx_cert = Get-Content '.\SigningCertificate.pfx' -Encoding Byte
-# [System.Convert]::ToBase64String($pfx_cert) | Out-File 'SigningCertificate_Encoded.txt'
-#
-# Open the output file, SigningCertificate_Encoded.txt, and copy the
-# string inside. Then, add the string to the repo as a GitHub secret
-# and name it "Base64_Encoded_Pfx."
-# For more information on how to configure your signing certificate for
-# this workflow, refer to https://github.com/microsoft/github-actions-for-desktop-apps#signing
-#
-# Finally, add the signing certificate password to the repo as a secret and name it "Pfx_Key".
-# See "Build the Windows Application Packaging project" below to see how the secret is used.
-#
-# For more information on GitHub Actions, refer to https://github.com/features/actions
-# For a complete CI/CD sample to get started with GitHub Action workflows for Desktop Applications,
-# refer to https://github.com/microsoft/github-actions-for-desktop-apps
-
-name: .NET Core Desktop
+name: Windows desktop build and publish
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [main]
+    tags: ['v*']
   pull_request:
-    branches: [ "main" ]
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: desktop-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ !startsWith(github.ref, 'refs/tags/') }}
+
+defaults:
+  run:
+    shell: pwsh
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: '1'
+  DOTNET_NOLOGO: '1'
+  DOTNET_GENERATE_ASPNET_CERTIFICATE: 'false'
 
 jobs:
-
   build:
-
-    strategy:
-      matrix:
-        configuration: [Debug, Release]
-
-    runs-on: windows-latest  # For a list of available runner types, refer to
-                             # https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idruns-on
-
-    env:
-      Solution_Name: your-solution-name                         # Replace with your solution name, i.e. MyWpfApp.sln.
-      Test_Project_Path: your-test-project-path                 # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
-      Wap_Project_Directory: your-wap-project-directory-name    # Replace with the Wap project directory relative to the solution, i.e. MyWpfApp.Package.
-      Wap_Project_Path: your-wap-project-path                   # Replace with the path to your Wap project, i.e. MyWpf.App.Package\MyWpfApp.Package.wapproj.
+    name: Test and publish Windows x64 EXE
+    runs-on: windows-2025
+    timeout-minutes: 45
+    outputs:
+      version: ${{ steps.version.outputs.version }}
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-      with:
-        fetch-depth: 0
+      - name: Checkout source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
 
-    # Install the .NET Core workload
-    - name: Install .NET Core
-      uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: 8.0.x
+      - name: Use the exact repository SDK for CI
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $sdk = Get-Content global.json -Raw | ConvertFrom-Json
+          $sdk.sdk.rollForward = 'disable'
+          $sdk | ConvertTo-Json -Depth 4 | Set-Content global.json -Encoding utf8
 
-    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
-    - name: Setup MSBuild.exe
-      uses: microsoft/setup-msbuild@v2
+      - name: Set up .NET from global.json
+        uses: actions/setup-dotnet@a98b56852c35b8e3190ac28c8c2271da59106c68 # v6
+        with:
+          global-json-file: global.json
 
-    # Execute all unit tests in the solution
-    - name: Execute unit tests
-      run: dotnet test
+      - name: Select four-part file version
+        id: version
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $expectedSdk = (Get-Content global.json -Raw | ConvertFrom-Json).sdk.version
+          $actualSdk = dotnet --version
+          if ($LASTEXITCODE -ne 0 -or $actualSdk -ne $expectedSdk) { throw 'The repository SDK version must be used.' }
+          if ($env:GITHUB_REF_TYPE -eq 'tag') {
+            if ($env:GITHUB_REF_NAME -notmatch '^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$') {
+              throw 'Use a four-part release tag, for example v1.0.0.7.'
+            }
+            $version = $env:GITHUB_REF_NAME.Substring(1)
+          } else {
+            $version = "0.1.$($env:GITHUB_RUN_NUMBER).$($env:GITHUB_RUN_ATTEMPT)"
+          }
+          $parsed = [Version]::Parse($version)
+          if (@($parsed.Major, $parsed.Minor, $parsed.Build, $parsed.Revision).Where({ $_ -gt 65535 }).Count -ne 0) {
+            throw 'Each file-version component must be at most 65535.'
+          }
+          "version=$version" >> $env:GITHUB_OUTPUT
 
-    # Restore the application to populate the obj folder with RuntimeIdentifiers
-    - name: Restore the application
-      run: msbuild $env:Solution_Name /t:Restore /p:Configuration=$env:Configuration
-      env:
-        Configuration: ${{ matrix.configuration }}
+      - name: Run offline VISCA and application-core tests
+        run: ./scripts/Test-Offline.ps1 -Suite All
 
-    # Decode the base 64 encoded pfx and save the Signing_Certificate
-    - name: Decode the pfx
-      run: |
-        $pfx_cert_byte = [System.Convert]::FromBase64String("${{ secrets.Base64_Encoded_Pfx }}")
-        $certificatePath = Join-Path -Path $env:Wap_Project_Directory -ChildPath GitHubActionsWorkflow.pfx
-        [IO.File]::WriteAllBytes("$certificatePath", $pfx_cert_byte)
+      - name: Run headless Windows adapter tests
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $project = 'CameraControl.WinUI.Tests/CameraControl.WinUI.Tests.csproj'
+          dotnet restore $project --locked-mode
+          if ($LASTEXITCODE -ne 0) { throw 'Windows test restore failed.' }
+          $categories = @(
+            'ApplicationServices', 'ConnectionEditing', 'ConfirmedPhotoServices',
+            'SelectedPositionServices', 'ServicesClose', 'UserOperation', 'QaScope',
+            'DeploymentAdapters', 'DeploymentStartupOptions', 'LayoutPolicy',
+            'VideoAdapters', 'VideoShutdown', 'LicenseCatalog'
+          )
+          $filter = ($categories | ForEach-Object { "TestCategory=$_" }) -join '|'
+          $arguments = @('test', $project, '--no-restore', '-c', 'Release', '--filter', $filter,
+            '--logger', 'trx;LogFileName=adapters.trx', '--results-directory', 'TestResults',
+            '--blame-hang-timeout', '60s')
+          dotnet @arguments
+          if ($LASTEXITCODE -ne 0) { throw 'Windows adapter tests failed.' }
+          [xml]$trx = Get-Content TestResults/adapters.trx -Raw
+          $counters = $trx.TestRun.ResultSummary.Counters
+          if ([int]$counters.total -eq 0 -or [int]$counters.executed -ne [int]$counters.total -or
+              [int]$counters.passed -ne [int]$counters.total) {
+            throw 'Every selected Windows adapter test must execute and pass.'
+          }
 
-    # Create the app package by building and packaging the Windows Application Packaging project
-    - name: Create the app package
-      run: msbuild $env:Wap_Project_Path /p:Configuration=$env:Configuration /p:UapAppxPackageBuildMode=$env:Appx_Package_Build_Mode /p:AppxBundle=$env:Appx_Bundle /p:PackageCertificateKeyFile=GitHubActionsWorkflow.pfx /p:PackageCertificatePassword=${{ secrets.Pfx_Key }}
-      env:
-        Appx_Bundle: Always
-        Appx_Bundle_Platforms: x86|x64
-        Appx_Package_Build_Mode: StoreUpload
-        Configuration: ${{ matrix.configuration }}
+      - name: Publish self-contained single EXE
+        env:
+          APP_VERSION: ${{ steps.version.outputs.version }}
+        run: ./scripts/Publish-App.ps1 -Runtime win-x64 -Version $env:APP_VERSION
 
-    # Remove the pfx
-    - name: Remove the pfx
-      run: Remove-Item -path $env:Wap_Project_Directory\GitHubActionsWorkflow.pfx
+      - name: Prepare download files and checksums
+        env:
+          APP_VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $releaseDirectory = 'artifacts/github-release'
+          $null = New-Item -ItemType Directory -Path $releaseDirectory -Force
+          Copy-Item artifacts/win-x64/CameraControl.WinUI.exe $releaseDirectory
+          $sourceArchive = "$releaseDirectory/App-Sources-$($env:APP_VERSION).zip"
+          git archive --format=zip --output=$sourceArchive HEAD
+          if ($LASTEXITCODE -ne 0) { throw 'App source archive failed.' }
+          $archiveArguments = @{
+            Path = @('LICENSES', 'docs/bedienung.md', 'docs/freigabestand.md')
+            DestinationPath = "$releaseDirectory/Licenses-and-Instructions.zip"
+          }
+          Compress-Archive @archiveArguments
+          $commit = git rev-parse HEAD
+          if ($LASTEXITCODE -ne 0) { throw 'Source commit cannot be read.' }
+          [ordered]@{
+            Version = $env:APP_VERSION
+            Commit = $commit
+            Runtime = 'win-x64'
+            Run = "$($env:GITHUB_SERVER_URL)/$($env:GITHUB_REPOSITORY)/actions/runs/$($env:GITHUB_RUN_ID)"
+            DependencySources = 'Add the matching library source set described in LICENSES/Sources-and-replacement.md before publishing a release.'
+          } | ConvertTo-Json | Set-Content "$releaseDirectory/build-info.json" -Encoding utf8
+          $downloadFiles = @(Get-ChildItem $releaseDirectory -File | Where-Object Name -ne 'SHA256SUMS.txt' | Sort-Object Name)
+          $downloadFiles | ForEach-Object {
+            "$((Get-FileHash $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant())  $($_.Name)"
+          } | Set-Content "$releaseDirectory/SHA256SUMS.txt" -Encoding ascii
+          "### Windows x64 build $($env:APP_VERSION)" >> $env:GITHUB_STEP_SUMMARY
+          'Download the EXE from the Windows artifact. Native UI, camera and DPI checks remain separate.' >> $env:GITHUB_STEP_SUMMARY
 
-    # Upload the MSIX package: https://github.com/marketplace/actions/upload-a-build-artifact
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: MSIX Package
-        path: ${{ env.Wap_Project_Directory }}\AppPackages
+      - name: Upload Windows download files
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: Windows-x64-${{ steps.version.outputs.version }}
+          path: artifacts/github-release/*
+          if-no-files-found: error
+          compression-level: 0
+          retention-days: 30
+
+      - name: Upload test and publish diagnostics
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6
+        with:
+          name: Windows-test-results-${{ github.run_attempt }}
+          path: |
+            TestResults/**
+            .omo/evidence/winui3-modernisierung/T9/**/*.trx
+            .omo/evidence/winui3-modernisierung/T9/**/*.json
+            .omo/evidence/winui3-modernisierung/T9/**/*.log
+            .omo/evidence/winui3-modernisierung/T9/**/failure.txt
+            .omo/evidence/winui3-modernisierung/T3/publish-*/*.log
+            .omo/evidence/winui3-modernisierung/T3/publish-*/*.json
+            .omo/evidence/winui3-modernisierung/T3/publish-*/failure.txt
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14
+
+  release:
+    name: Create GitHub release draft
+    needs: build
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Download verified build files
+        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7
+        with:
+          name: Windows-x64-${{ needs.build.outputs.version }}
+          path: release
+
+      - name: Create draft with download files
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          cd release
+          sha256sum --check SHA256SUMS.txt
+          cat > release-notes.md <<'NOTES'
+          Windows 11 x64. Download and start CameraControl.WinUI.exe.
+
+          This draft contains the EXE, app sources, license texts and SHA-256 checksums.
+          Add the matching library source set and its sources-manifest.json before publication.
+          The source-set contract is in LICENSES/Sources-and-replacement.md.
+          CI checks offline behavior and compilation. It does not confirm physical camera operation or native UI/DPI checks.
+          NOTES
+          gh release create "$RELEASE_TAG" --verify-tag --draft --title "$RELEASE_TAG" \
+            --notes-file release-notes.md --repo "$GH_REPO" \
+            CameraControl.WinUI.exe App-Sources-*.zip Licenses-and-Instructions.zip build-info.json SHA256SUMS.txt
