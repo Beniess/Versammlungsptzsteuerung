@@ -87,7 +87,7 @@ jobs:
             'VideoAdapters', 'VideoShutdown', 'LicenseCatalog'
           )
           $filter = ($categories | ForEach-Object { "TestCategory=$_" }) -join '|'
-          $arguments = @('test', $project, '--no-restore', '-c', 'Release', '--filter', $filter,
+          $arguments = @('test', $project, '--no-restore', '-c', 'Release', '-p:ThreadPoolMinThreads=8', '--filter', $filter,
             '--logger', 'trx;LogFileName=adapters.trx', '--results-directory', 'TestResults',
             '--blame-hang-timeout', '60s')
           dotnet @arguments

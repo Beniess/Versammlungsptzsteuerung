@@ -17,6 +17,10 @@ Bei einem Versions-Tag werden diese Dateien zusätzlich an einen Release-Entwurf
 
 Der Workflow prüft VISCA, Persistenz, Kamerasitzung, Fotoabläufe, Versionswechsel und Windows-Adapter ohne reale Kamera. Sichtbare UI-Abläufe, Livebild, höhere DPI-Stufen und der Betrieb mit einer realen Kamera werden getrennt geprüft. Ein erfolgreicher CI-Lauf ändert den [Freigabestand](freigabestand.md) nicht automatisch.
 
+Die Adaptertests verwenden mindestens acht Workerthreads. Ihr Testprozess betreibt IPC-Client und simulierten Server gemeinsam. Damit warten beide Seiten auf kleinen CI-Runnern nicht auf zusätzliche Workerthreads. Die vorhandenen IPC-Fristen und Testprüfungen bleiben erhalten. Die Einstellung gilt nur für den Testhost.
+
+`.gitattributes` erhält die Originalbytes der Lizenztexte und Testdateien. Git darf ihre Zeilenenden beim Checkout nicht ändern. Die Lizenz-Prüfsummen bleiben unverändert.
+
 Der Windows-Runner besitzt das Windows-SDK 26100. Der Workflow verwendet exakt den SDK-Stand aus `global.json`, damit die NuGet-Lockdatei erhalten bleibt. Die CI setzt dazu ausschließlich in ihrem Arbeitsverzeichnis `rollForward` auf `disable`. Sie lässt den Standardpfad für NuGet-Pakete unverändert. Die GitHub-Actions sind auf feste Commit-IDs gesetzt. Nur der Release-Job erhält `contents: write`; er verwendet das vorhandene `GITHUB_TOKEN`.
 
 Referenzen: [Windows-Runner](https://github.com/actions/runner-images/blob/main/images/windows/Windows2025-Readme.md), [SDK-Auswahl](https://github.com/actions/setup-dotnet#using-the-global-json-file-input), [GitHub-Release-Entwurf](https://cli.github.com/manual/gh_release_create).
