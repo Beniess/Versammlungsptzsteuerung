@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <IsTestProject>true</IsTestProject>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.14.1" />
+    <PackageReference Include="NUnit" Version="4.3.2" />
+    <PackageReference Include="NUnit3TestAdapter" Version="5.0.0" />
+    <ProjectReference Include="..\CameraControl.AppCore\CameraControl.AppCore.csproj" />
+    <ProjectReference Include="..\CameraControl.Visca\CameraControl.Visca.csproj" />
+    <Compile Include="..\CameraControl.Visca.Tests\Fixtures.cs" Link="Support\ViscaFixtures.cs" />
+    <Compile Include="..\CameraControl.Visca.Tests\LoopbackServer.cs" Link="Support\LoopbackServer.cs" />
+    <None Include="..\tests\fixtures\visca\packets.tsv" Link="Fixtures\packets.tsv" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>
