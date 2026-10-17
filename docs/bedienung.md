@@ -1,6 +1,6 @@
 # Bedienung der WinUI-App
 
-Stand: 13.10.2026. Diese Anleitung beschreibt Kandidat 1.0.0.6. Der Fotoablauf wurde mit einem eigenen lokalen Livebild- und VISCA-Testserver geprüft. Aufnahme, Bestätigung, Abbrechen und Datenbestand nach Neustart sind dabei die Pflichtfälle. Höhere DPI-Stufen, Hochkontrast und Betrieb mit einer realen Kamera bleiben offen. Der [Freigabestand](freigabestand.md) nennt die Belege und Grenzen.
+Stand: 17.10.2026. Diese Anleitung beschreibt die Bedienung von Version 1.0.0.7. Die nachgewiesenen Tests und die noch offenen Prüfungen stehen im [Freigabestand](freigabestand.md).
 
 ## EXE starten
 

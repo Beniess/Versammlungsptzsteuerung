@@ -68,6 +68,8 @@ Die Gegenläufe stützen die Checkout- und Testhost-Korrektur. Zwei grüne Läuf
 | 125/150/200 Prozent und Hochkontrast | Ausdrücklich nicht bestanden/nicht nachgewiesen | **Weiter offen** |
 | Reale Kamera, physische Bewegung und Bildsynchronität | Kein Test durchgeführt | **Weiter offen** |
 
+Die [Bedienungsanleitung](bedienung.md) dokumentierte außerdem am 13.10.2026 für Kandidat 1.0.0.6 einen Fotoablauf mit lokalem Livebild-/VISCA-Testserver (Aufnahme, Bestätigung, Abbrechen und Neustart) sowie Fensterbilder bei 100 Prozent in drei Größen. Auch diese späteren Textbefunde sind historische Dokumentation; ihre Originalergebnisse und Bilder liegen nicht im Git-Baum. Sie belegen keine neu ausgeführten Tests der finalen 1.0.0.7-EXE.
+
 Die alten Reviews sind eingecheckt, etwa [Clean Windows](../.omo/start-work/reviews/T9-clean-windows.md) und [letzte Oberflächenprüfung](../.omo/start-work/reviews/T10-final-surface.md). Die dort und unten referenzierten `.omo/evidence/`-JSONs und PNGs fehlen im Git-Baum; `.gitignore` schließt diesen Ordner aus. Die damaligen Beobachtungen werden als historische Dokumentation erhalten, hier aber weder als neu ausgeführt noch als unabhängig anhand der Originalbilder nachgeprüft ausgewiesen.
 
 ## Konkrete Regressionsrisiken und offene Abnahme

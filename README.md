@@ -1,60 +1,61 @@
-# Versammlungsptzsteuerung
+# Versammlungs-Kamerasteuerung
 
-Native PTZ-Kamerasteuerung für Windows 11 x64. Die neue App verwendet WinUI 3,
-.NET 10 und die vorhandene VISCA-Bibliothek. Vier Bildtasten rufen Leser, Tisch,
-Redner und Home auf. Steuerung, Einstellungen und Vorschau ergänzen die
-Positionsseite.
+Eine Windows-App zum Schwenken, Neigen und Zoomen einer PTZ-Kamera.
+Drei Bildtasten rufen gespeicherte Ansichten auf, zum Beispiel Leser, Tisch und Redner.
+Eine vierte Taste fährt die Kamera in ihre Home-Position.
+Ein Livebild hilft beim Ausrichten.
 
-Der aktuelle Stand ist ein Entwicklungs- und QA-Stand. Die Oberfläche ist
-sichtbar nutzbar. Die vollständige Release-Prüfung ist noch offen. Der Betrieb
-mit einer realen Kamera wurde noch nicht geprüft.
+**[EXE herunterladen](https://github.com/Beniess/Versammlungsptzsteuerung/releases/download/v1.0.0.7/CameraControl.WinUI.exe)** · [Alle Dateien zu Version 1.0.0.7](https://github.com/Beniess/Versammlungsptzsteuerung/releases/tag/v1.0.0.7)
 
-- [Bedienung, Erststart und Versionswechsel](docs/bedienung.md)
-- [Aufbau und Entwicklungsablauf](docs/architektur.md)
-- [GitHub-Build und Veröffentlichung](docs/github-publish.md)
-- [Offene Freigabeprüfungen](docs/freigabestand.md)
-- [Historischer Importstand](docs/importstand-2026-10-10.md)
+## Voraussetzungen
 
-## Projektaufbau
+- Windows 11 auf einem x64-PC.
+- Eine über das Netzwerk erreichbare Kamera mit VISCA über TCP.
+- Für Livebild und Fotos: ein RTSP-Stream der Kamera.
 
-| Projekt | Aufgabe | Zielplattform |
-| --- | --- | --- |
-| `CameraControl.WinUI` | Neue native Oberfläche, Vorschau und lokaler EXE-Start | WinUI 3 / .NET 10 / Windows 11 x64 |
-| `CameraControl.AppCore` | Einstellungen, Kamerasitzung, Positionsentwürfe und Versionswechsel | .NET 10 |
-| `CameraControl.Visca` | VISCA über TCP und Kamerabefehle | .NET Standard 2.0 / .NET 10 |
-| `CameraControl.WinUI.Tests` | Native UIA- und Adapterprüfungen | .NET 10 / Windows |
-| `CameraControl.AppCore.Tests` und `CameraControl.Visca.Tests` | Speicher-, Ablauf- und Protokollprüfungen | Ziele der jeweiligen Testprojekte |
-| `CameraControl.Visca.Demo` | WPF-Referenz aus dem Import | .NET Framework 4.8.1 |
-| `CameraControl.Visca.StressTest` | Historischer Stresstest mit realer Kameraadresse | .NET 6 |
+Die EXE enthält .NET und VLC. Eine separate Installation dieser Komponenten ist nicht erforderlich.
+VISCA-Port und RTSP-Pfad hängen von der Kamera ab.
 
-Die Solution `Versammlungsptzsteuerung.sln` enthält bisher die historischen
-Projekte. Für die neue Anwendung das Projekt
-`CameraControl.WinUI/CameraControl.WinUI.csproj` öffnen. Die WPF-Referenz und der
-Stresstest sind keine Startanleitung und keine Freigabe der neuen WinUI-App.
+## Starten und verbinden
 
-## Entwicklung
+1. `CameraControl.WinUI.exe` herunterladen und öffnen.
+2. In der App **Einstellungen** öffnen.
+3. Die IP-Adresse oder den Hostnamen der Kamera und ihren **VISCA-Port** eintragen.
+4. Für das Livebild die vollständige **RTSP-URL** eintragen. Benutzername und Passwort bei Bedarf in die getrennten Zugangsdatenfelder eingeben.
+5. **Speichern und verbinden** wählen.
 
-Die neue App wird mit dem .NET-10-SDK und den Windows-Buildwerkzeugen gebaut.
-Paketversionen stehen in den Projekt- und Lockdateien. Der Release-Build erzeugt
-eine selbständige Datei `CameraControl.WinUI.exe`. Die Laufzeit und die nativen
-Videodateien gehören zum Bundle. Der vollständige Nachweis auf einem sauberen
-Windows-11-System ist noch Teil der Release-Prüfung.
+Beim ersten Start richtet die App einen Eintrag im Startmenü ein.
+Danach kann sie über **Versammlungs-Kamerasteuerung** im Startmenü oder über die Windows-Suche geöffnet werden.
 
-Die WinUI-App übernimmt keine alten Werte aus `App.config`. Neue Daten liegen
-unter `%LOCALAPPDATA%\Versammlungsptzsteuerung\Data`. Host, VISCA-Port und
-vollständige RTSP-URL werden getrennt eingerichtet. Ein frischer Datenordner hat
-keinen Host, keinen Videostream und keine eingerichteten normalen Positionen.
+## Kamera bedienen
 
-Entwicklungs- und QA-Starts verwenden eigene Datenpfade. Im QA-Modus sind nur
-Loopback-Endpunkte erlaubt. Die aktuelle sichtbare QA-Instanz ist deshalb kein
-Nachweis für eine reale Kameraverbindung.
+- **Ansicht aufrufen:** Eine eingerichtete Bildtaste wählen.
+- **Kamera ausrichten:** Das Schwenk-/Neigefeld oder das Zoomfeld gedrückt halten. Loslassen beendet die Bewegung.
+- **Ansicht speichern:** In der Steuerung die gewünschte Ansicht wählen, die Kamera ausrichten und **Foto** wählen. Mit **Speichern** werden das Bild und die Kameraposition gemeinsam gespeichert.
+- **Livebild öffnen:** **Vorschau** wählen.
+- **Home:** Sendet den Home-Befehl der Kamera. Diese Taste speichert keine eigene Zielposition.
 
-## Historie und Lizenzunterlagen
+Die drei normalen Ansichten sind anfangs leer. Ihre Namen können in den Einstellungen geändert werden.
+Die [Bedienungsanleitung](docs/bedienung.md) erklärt Tastatursteuerung, Fotos und Versionswechsel.
 
-Der ursprüngliche Import erfolgte am 10.10.2026 aus
-`DemoCode-CameraControl-2.zip`. Der Archivnachweis und das vollständige damalige
-README bleiben im [Importstand](docs/importstand-2026-10-10.md) erhalten.
+## Stand der Version
 
-Das Lizenzquelleninventar und die Drittsoftware-Unterlagen werden getrennt
-erstellt. Diese README erklärt keine abgeschlossene Lizenz- oder
-Release-Freigabe.
+Version **1.0.0.7** ist eine Vorabversion.
+333 Offline-Tests und 108 Windows-Adaptertests sind bestanden.
+Der Betrieb mit einer realen Kamera, höhere Anzeigeskalierungen und Hochkontrast sind noch nicht geprüft.
+Prüfergebnisse und offene Anforderungen stehen im [Freigabestand](docs/freigabestand.md).
+
+## Technik und Entwicklung
+
+Die Anwendung verwendet WinUI 3, .NET 10 und LibVLC.
+Die Steuerung sendet VISCA-Befehle über TCP. Das Livebild verwendet RTSP.
+Einstellungen und Fotos liegen unter `%LOCALAPPDATA%\Versammlungsptzsteuerung\Data`.
+Passwörter liegen in der Windows-Zugangsdatenablage.
+
+Für die aktuelle App das Projekt `CameraControl.WinUI/CameraControl.WinUI.csproj` öffnen.
+Die Solution enthält bisher die älteren WPF-Projekte.
+
+- [Architektur und Entwicklung](docs/architektur.md)
+- [Build und Veröffentlichung](docs/github-publish.md)
+- [Drittsoftware und Lizenztexte](LICENSES/README.md)
+- [Herkunft des Projekts](docs/importstand-2026-10-10.md)
